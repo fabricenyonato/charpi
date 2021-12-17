@@ -17,10 +17,18 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ArticleTearOff {
   const _$ArticleTearOff();
 
-  _Article call({required String title, required String summary}) {
+  _Article call(
+      {required int id,
+      required String title,
+      required String summary,
+      required String content,
+      required String image}) {
     return _Article(
+      id: id,
       title: title,
       summary: summary,
+      content: content,
+      image: image,
     );
   }
 }
@@ -30,8 +38,11 @@ const $Article = _$ArticleTearOff();
 
 /// @nodoc
 mixin _$Article {
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get summary => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ArticleCopyWith<Article> get copyWith => throw _privateConstructorUsedError;
@@ -41,7 +52,8 @@ mixin _$Article {
 abstract class $ArticleCopyWith<$Res> {
   factory $ArticleCopyWith(Article value, $Res Function(Article) then) =
       _$ArticleCopyWithImpl<$Res>;
-  $Res call({String title, String summary});
+  $Res call(
+      {int id, String title, String summary, String content, String image});
 }
 
 /// @nodoc
@@ -54,10 +66,17 @@ class _$ArticleCopyWithImpl<$Res> implements $ArticleCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? summary = freezed,
+    Object? content = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -65,6 +84,14 @@ class _$ArticleCopyWithImpl<$Res> implements $ArticleCopyWith<$Res> {
       summary: summary == freezed
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: content == freezed
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -75,7 +102,8 @@ abstract class _$ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
   factory _$ArticleCopyWith(_Article value, $Res Function(_Article) then) =
       __$ArticleCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String summary});
+  $Res call(
+      {int id, String title, String summary, String content, String image});
 }
 
 /// @nodoc
@@ -89,10 +117,17 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? summary = freezed,
+    Object? content = freezed,
+    Object? image = freezed,
   }) {
     return _then(_Article(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -101,6 +136,14 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
               as String,
+      content: content == freezed
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -108,16 +151,27 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Article implements _Article {
-  const _$_Article({required this.title, required this.summary});
+  const _$_Article(
+      {required this.id,
+      required this.title,
+      required this.summary,
+      required this.content,
+      required this.image});
 
+  @override
+  final int id;
   @override
   final String title;
   @override
   final String summary;
+  @override
+  final String content;
+  @override
+  final String image;
 
   @override
   String toString() {
-    return 'Article(title: $title, summary: $summary)';
+    return 'Article(id: $id, title: $title, summary: $summary, content: $content, image: $image)';
   }
 
   @override
@@ -125,15 +179,21 @@ class _$_Article implements _Article {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Article &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.summary, summary));
+            const DeepCollectionEquality().equals(other.summary, summary) &&
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(summary));
+      const DeepCollectionEquality().hash(summary),
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
@@ -142,13 +202,23 @@ class _$_Article implements _Article {
 }
 
 abstract class _Article implements Article {
-  const factory _Article({required String title, required String summary}) =
-      _$_Article;
+  const factory _Article(
+      {required int id,
+      required String title,
+      required String summary,
+      required String content,
+      required String image}) = _$_Article;
 
+  @override
+  int get id;
   @override
   String get title;
   @override
   String get summary;
+  @override
+  String get content;
+  @override
+  String get image;
   @override
   @JsonKey(ignore: true)
   _$ArticleCopyWith<_Article> get copyWith =>

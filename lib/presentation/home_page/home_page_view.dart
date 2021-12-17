@@ -13,8 +13,13 @@ class HomePageData with _$HomePageData {
 
 class HomePageView extends StatelessWidget {
   final HomePageData data;
+  final void Function() onLogin;
 
-  const HomePageView({ Key? key, required this.data })
+  const HomePageView({
+    Key? key,
+    required this.data,
+    required this.onLogin,
+  })
     : super(key: key);
 
   @override
@@ -27,6 +32,7 @@ class HomePageView extends StatelessWidget {
           child: Text(error.toString()),
         ),
         success: (articles) => ListView.builder(
+          itemCount: articles.length,
           itemBuilder: (_, index) {
             final article = articles[index];
 
@@ -39,6 +45,15 @@ class HomePageView extends StatelessWidget {
     );
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+        actions: [
+          IconButton(
+            onPressed: onLogin,
+            icon: const Icon(Icons.person)
+          )
+        ],
+      ),
       body: body,
     );
   }

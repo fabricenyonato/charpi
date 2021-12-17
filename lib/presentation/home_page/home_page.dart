@@ -1,6 +1,9 @@
+import 'package:charpi/di.dart';
 import 'package:charpi/presentation/home_page/home_page_bloc.dart';
 import 'package:charpi/presentation/home_page/home_page_view.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:charpi/presentation/login_page/login_page.dart';
+import 'package:charpi/presentation/login_page/login_page_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,7 +24,10 @@ class _HomePageState extends State<HomePage> {
     return BlocBuilder<HomePageBloc, HomePageData>(
       bloc: _bloc,
         builder: (_, data) {
-          return HomePageView(data: data);
+          return HomePageView(
+            data: data,
+            onLogin: _goToLogin,
+          );
         }
     );
   }
@@ -30,5 +36,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _bloc.init();
+  }
+
+  void _goToLogin() {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (_) => LoginPage(bloc: getit<LoginPageBloc>()),
+    ));
   }
 }
