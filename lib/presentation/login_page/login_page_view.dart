@@ -1,6 +1,7 @@
 import 'package:charpi/domain/entities/user.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 part 'login_page_view.freezed.dart';
 
@@ -33,26 +34,66 @@ class LoginPageView extends StatelessWidget {
     final form = Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            'Login',
+            style: GoogleFonts.rammettoOne(
+              fontSize: 32,
+              color: Colors.grey.shade800,
+            ),
+          ),
+
+          const SizedBox(height: 24),
           TextField(
             controller: _identifierCtrl,
+            decoration: const InputDecoration(
+              labelText: 'Email or username'
+            ),
           ),
 
           const SizedBox(height: 16),
-
           TextField(
             controller: _passwordCtrl,
+            decoration: const InputDecoration(
+              labelText: 'Passord',
+            ),
+            obscureText: true,
+          ),
+
+          const SizedBox(height: 16),
+          SizedBox(
+            width: double.infinity,
+            child: TextButton(
+              onPressed: _onSubmit,
+              child: const Text(
+                'Login',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty
+                  .resolveWith((_) => Theme.of(context).primaryColor),
+              ),
+            ),
           ),
         ],
       ),
     );
 
-    return Scaffold(
-      body: form,
-      floatingActionButton: FloatingActionButton(
-        onPressed: _onSubmit,
-        child: const Icon(Icons.save),
+    final body = SafeArea(
+      child: Center(
+        child: SingleChildScrollView(
+          child: form,
+        ),
       ),
+    );
+
+    return Scaffold(
+      body: body,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _onSubmit,
+      //   child: const Icon(Icons.save),
+      // ),
     );
   }
 

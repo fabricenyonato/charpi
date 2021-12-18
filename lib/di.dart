@@ -7,6 +7,7 @@ import 'package:charpi/presentation/home_page/home_page_bloc.dart';
 import 'package:charpi/presentation/home_page/home_page_view.dart';
 import 'package:charpi/presentation/login_page/login_page_bloc.dart';
 import 'package:charpi/presentation/login_page/login_page_view.dart';
+import 'package:charpi/vars.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vinland/vinland.dart' as vi;
 
@@ -35,7 +36,7 @@ void _registerBlocs() {
 }
 
 void initDi() {
-  const vinland = vi.Vinland(baseUrl: 'http://192.168.1.71:1337/api');
+  const vinland = vi.Vinland(baseUrl: '$apiUrl/api');
   getit.registerSingleton<vi.Vinland>(vinland);
 
   final vinlandRepository = VinlandRepositoryImpl(vinland: getit());

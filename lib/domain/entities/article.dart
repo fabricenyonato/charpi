@@ -1,3 +1,4 @@
+import 'package:charpi/vars.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:vinland/vinland.dart' as vi;
 
@@ -5,6 +6,8 @@ part 'article.freezed.dart';
 
 @freezed
 class Article with _$Article {
+  const Article._();
+
   const factory Article({
     required int id,
     required String title,
@@ -22,4 +25,7 @@ class Article with _$Article {
       content: article.attributes.content,
       image: article.attributes.image.data.attributes.url,
     );
+
+  String get realImage =>
+    '$apiUrl$image';
 }

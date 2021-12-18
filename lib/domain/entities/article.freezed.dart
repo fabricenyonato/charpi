@@ -150,13 +150,14 @@ class __$ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Article implements _Article {
+class _$_Article extends _Article {
   const _$_Article(
       {required this.id,
       required this.title,
       required this.summary,
       required this.content,
-      required this.image});
+      required this.image})
+      : super._();
 
   @override
   final int id;
@@ -201,13 +202,14 @@ class _$_Article implements _Article {
       __$ArticleCopyWithImpl<_Article>(this, _$identity);
 }
 
-abstract class _Article implements Article {
+abstract class _Article extends Article {
   const factory _Article(
       {required int id,
       required String title,
       required String summary,
       required String content,
       required String image}) = _$_Article;
+  const _Article._() : super._();
 
   @override
   int get id;

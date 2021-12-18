@@ -20,7 +20,6 @@ class VinlandRepositoryImpl implements VinlandRepository {
 
   @override
   Future<User> login(String identifier, String password) {
-    print('$identifier --- $password');
     return vinland.auth.login(vi.LoginRequestBody(
       identifier: identifier,
       password: password,
@@ -34,5 +33,4 @@ class VinlandRepositoryImpl implements VinlandRepository {
         );
     });
   }
-
 }
